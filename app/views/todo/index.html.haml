@@ -1,9 +1,22 @@
-%div{'ng-controller' => 'TodoCtrl as control'}
+%div{'ng-controller' => 'TodoCtrl'}
   .container-fluid
     .panel.panel-success
       .panel-heading
-        %h1 Do what you gotta do {{control.user.name}}
+        %h1 Do what you gotta do {{user.name}}
       .panel-body
         %form.form-inline
           .form-group
-            %input.form-control{:autofocus => "", "ng-model" => "name", :placeholder => "Enter your name", :type => "text"}
+            %input.form-control#new-todo{:autofocus => "", "ng-model" => "name", :placeholder => "Enter a todo", :type => "text"}
+            %button.btn.btn-primary{'ng-click' => "new_todo()"}
+              +
+      .panel-footer
+        %ul.list-group
+          %li.list-group-item{'ng-repeat' => 'todo in todos'}
+            {{todo.name}}
+            .pull-right
+              %input{type: 'checkbox',
+              id: '{{todo.id}}',
+              'ng-checked' => '{{todo.is_complete}}', 
+              'ng-model' => 'todo.is_complete', 
+              'ng-click' => "check_todo()"}
+

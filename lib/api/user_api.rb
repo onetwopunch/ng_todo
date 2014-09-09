@@ -3,11 +3,11 @@ module API
 		resource 'users' do 
 
 			params do
-				requires :id, type: Integer, desc: 'User Id'
+				requires :token, type: String, desc: 'User Token'
 			end
-			route_param :id do
+			route_param :token do
 				get do
-					::User.find(params[:id])
+					::User.find_by_token(params[:token])
 				end
 			end
 		end

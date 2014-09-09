@@ -6,18 +6,35 @@
 app = angular.module('TodoApp', [])
 app.controller 'TodoCtrl', ($scope, $http) ->
   console.log 'Controller Loaded'
-  $http.get('/api/users/1')
+  token = $('body').data('private-token')
+  $http.get("/api/users/#{token}")
     .success (data, status, headers, config) ->
       $scope.user = data
-      console.log data
+      console.log $scope
     .error (data, status, headers, config) ->
       console.log 'error'
-      console.log data
-  $http.get('/api/user_todos/1')
+      #document.write data
+  $http.get("/api/user_todos/#{token}")
     .success (data, status, headers, config) ->
       $scope.todos = data
-      console.log data
+      console.log $scope
     .error (data, status, headers, config) ->
       console.log 'error'
+      #document.write data
+  $scope.new_todo = () ->
+    $http.post '/api/todo/new',
+      token: token
+      todo: $('#new-todo').val()
+    .success (data, status, headers, config) ->
       console.log data
+      if data.success == true
+        $scope.todos = data.todos
+    .error (data, status, header, config) ->
+      console.log 'error'
+  $scope.check_todo = () ->
+    console.log this.todo.is_complete
+#    $http.put '/api/todo/check',
+#      token: token,
+#      todo: todo
+          
 

@@ -28,6 +28,14 @@ class User < ActiveRecord::Base
 			puts 'fail'
 	  end
 	end
+  
+	def private_token
+		Digest::SHA1.hexdigest salt
+	end
+
+	def self.find_by_token(t)
+		User.all.find{ |u| u.private_token == t }
+	end
 
 	def self.make_salt
 		UUID.state_file = false
