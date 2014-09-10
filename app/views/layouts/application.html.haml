@@ -9,8 +9,7 @@
     .navbar.navbar-inverse.navbar-fixed-top{role: "navigation"}
       .container
         .navbar-header
-          = link_to :controller => 'todo', :action => 'index' do 
-            %h1 NgTodo
+          %h1 NgTodo
         .navbar-collapse.collapse
           .navbar-form.navbar-right
             - if session[:user_id]
