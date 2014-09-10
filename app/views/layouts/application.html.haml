@@ -16,7 +16,7 @@
             - if session[:user_id]
               = link_to('Log Out', {:controller => 'user', :action => 'logout'}, :class => 'btn btn-danger')
             - else
-              = link_to('Log In', {:controller => 'user', :action => 'index'}, :class => 'btn btn-success')
+              = link_to('Log In', {:controller => 'user', :action => 'login'}, :class => 'btn btn-success')
     .container
       .buffer
         = yield

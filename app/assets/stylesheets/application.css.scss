@@ -1,6 +1,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+  background-color: #ddd;
+}
 .buffer {
 	margin-top: 100px;
 }

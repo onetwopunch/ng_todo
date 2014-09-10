@@ -5,7 +5,7 @@ class UserController < ApplicationController
 	end
 
 	def authenticate
-		unless session[:user_id]
+		unless current_user
 			user = User.authenticate(params[:email], params[:password])
 			if user
 				session[:user_id] = user.email	
@@ -14,8 +14,6 @@ class UserController < ApplicationController
 				flash[:notice] = "Email/Password combination are incorrect."
 				redirect_to(:action =>'login')
 			end
-		else
-			redirect_to(:controller=>'todo', :action =>'index')
 		end
 	end
 
