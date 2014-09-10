@@ -48,7 +48,8 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: utf8
   database: ng_todo_production
-  username: ng_todo
-  password: <%= ENV['NG_TODO_DATABASE_PASSWORD'] %>
+  pool: 5
+

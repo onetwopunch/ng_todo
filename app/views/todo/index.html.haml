@@ -2,21 +2,36 @@
   .container-fluid
     .panel.panel-success
       .panel-heading
-        %h1 Do what you gotta do {{user.name}}
+        %h4 
+          %i Welcome, {{user.name}}!
       .panel-body
-        %form.form-inline
-          .form-group
-            %input.form-control#new-todo{:autofocus => "", "ng-model" => "name", :placeholder => "Enter a todo", :type => "text"}
-            %button.btn.btn-primary{'ng-click' => "new_todo()"}
-              +
+        .row
+          .col-sm-6
+            %form
+              .input-group
+                %input.form-control#new-todo{:autofocus => "", "ng-model" => "name", :placeholder => "Enter a todo", :type => "text"}
+                %span.input-group-btn
+                  %button.btn.btn-primary{'ng-click' => "new_todo()"}
+                    %span.glyphicon.glyphicon-plus
+          .col-sm-6
+            %span.pull-right
+              %button.btn.btn-danger{'ng-click' => "editing =! editing"}
+                %span.glyphicon.glyphicon-edit
+
       .panel-footer
         %ul.list-group
           %li.list-group-item{'ng-repeat' => 'todo in todos'}
             {{todo.name}}
             .pull-right
+              %button.btn.btn-xs.btn-danger{'ng-click' => "delete_todo()", 
+                'ng-show' => 'editing',
+                style: "margin-left: 5px"}
+                %span.glyphicon.glyphicon-trash
+            .pull-right
               %input{type: 'checkbox',
               id: '{{todo.id}}',
               'ng-checked' => '{{todo.is_complete}}', 
               'ng-model' => 'todo.is_complete', 
-              'ng-click' => "check_todo()"}
+              'ng-change' => "check_todo()"}
+
 
