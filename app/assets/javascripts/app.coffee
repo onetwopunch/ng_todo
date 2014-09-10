@@ -4,7 +4,7 @@
 #
 
 app = angular.module('TodoApp', [])
-app.controller 'TodoCtrl', ($scope, $http) ->
+app.controller 'TodoCtrl', ['$scope', '$http', ($scope, $http) ->
   console.log 'Controller Loaded'
   token = $('body').data('private-token')
   $scope.editing = false
@@ -58,5 +58,5 @@ app.controller 'TodoCtrl', ($scope, $http) ->
     .error (d, s, h, c) ->
       console.log d
       console.log 'Error'
-     
+  ]  
 
