@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="193173427">
+    <data-source source="LOCAL" name="Rails ng_todo: production" uuid="f34568be-33b5-4ef2-b11a-ac28f36578e9">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:ng_todo_production</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+

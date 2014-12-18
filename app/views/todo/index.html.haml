@@ -6,14 +6,14 @@
           %i Welcome, {{user.name}}!
       .panel-body
         .row
-          .col-sm-6
+          .col-xs-10
             %form
               .input-group
                 %input.form-control#new-todo{:autofocus => "", "ng-model" => "name", :placeholder => "Enter a todo", :type => "text"}
                 %span.input-group-btn
                   %button.btn.btn-primary{'ng-click' => "new_todo()"}
                     %span.glyphicon.glyphicon-plus
-          .col-sm-6
+          .col-xs-2
             %span.pull-right
               %button.btn.btn-danger{'ng-click' => "editing =! editing"}
                 %span.glyphicon.glyphicon-edit
@@ -21,12 +21,12 @@
       .panel-footer
         %ul.list-group
           %li.list-group-item{'ng-repeat' => 'todo in todos'}
-            {{todo.name}}
-            .pull-right
-              %button.btn.btn-xs.btn-danger{'ng-click' => "delete_todo()", 
-                'ng-show' => 'editing',
-                style: "margin-left: 5px"}
-                %span.glyphicon.glyphicon-trash
+            %button.btn.btn-xs.btn-danger{'ng-click' => "delete_todo()",
+              'ng-show' => 'editing',
+              style: "margin-left: 5px"}
+              %span.glyphicon.glyphicon-trash
+            %span{'ng-class'=>"{completed: todo.is_complete}"}
+              {{todo.name}}
             .pull-right
               %input{type: 'checkbox',
               id: '{{todo.id}}',
